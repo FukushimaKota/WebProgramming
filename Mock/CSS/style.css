@@ -1,0 +1,35 @@
+
+/* P1の内容 */
+
+.title {
+	text-align: center;
+}
+
+.login-area {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.table-style {
+		width: 400px;
+	margin: 0 auto;
+}
+
+/* P2の内容 */
+
+.a{
+	text-align: right;
+	color : red;
+}
+
+/* P3の内容 */
+.newuser{
+	text-align: justify;
+}
+.center{
+	text-align: center;
+}
+
+/* P4の内容 */
+/* P5の内容 */
+/* P6の内容 */
