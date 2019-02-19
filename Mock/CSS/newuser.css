@@ -1,0 +1,45 @@
+.logout{
+	text-align: right;
+	background-color: gray;
+}
+
+.logout2{
+	color: red;
+	text-decoration: underline;
+	margin-left: 2em;
+	font-size: 100%;
+}
+.size{
+	font-size: 100%;
+}
+
+.title {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+.return{
+	text-decoration: underline;
+}
+
+.submit{
+	text-align: center;
+
+}
+
+.a{
+	margin-bottom: 1em;
+}
+
+.b{
+	margin-left:8.5em;
+}
+
+.c{
+	margin-left:4.5em;
+}
+
+.d{
+	margin-left:10em;
+}

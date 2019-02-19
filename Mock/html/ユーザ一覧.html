@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="../CSS/userlist.css">
+<title>ユーザ一覧</title>
+
+</head>
+
+<body>
+<div class=logout>
+<header >
+<h1 class=size>ユーザ名さん <a class=logout2 href="ログイン画面.html">ログアウト</a>
+</h1>
+</header>
+</div>
+<form action="Example/ログイン.html" method="post">
+<div class=title>
+<h1>ユーザ一覧</h1>
+</div>
+
+<div class=newuser>
+<a href=新規登録.html>新規登録</a>
+</div>
+
+<div class=ID>
+<label for="ID"></label>
+<p class=form>ログインID</p><input type="text" name="ログインID" required="required" placeholder="ログインID"></input>
+</div>
+
+<div class=name>
+<label for="user_name"></label>
+<p class=form1>ユーザ名</p><input type="text" name="ユーザ名" required="required" placeholder="ユーザ名"></input>
+</div>
+
+<p class=form>生年月日</p>
+<div class=day>
+<figure class=form>
+<label for=day1></label>
+<input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+</figure>
+
+<p class=form>〜</p>
+
+<figure class=form>
+<label for=day2></label>
+<input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+</figure>
+</div>
+</form>
+
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">ログインID</th>
+      <th scope="col">ユーザ名</th>
+      <th scope="col">生年月日</th>
+       <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id0001</td>
+      <td>田中太郎</td>
+      <td>1989年04月26日</td>
+	  <td><a href=ユーザ情報.html class="btn btn-primary">詳細</a>
+	  <a href=更新.html class="btn btn-success">更新</a>
+	  <a href=削除.html class="btn btn-danger">削除</a>
+	</td>
+    </tr>
+    <tr>
+      <td>id0002</td>
+      <td>佐藤二郎</td>
+      <td>2001年11月12日</td>
+      <td><a href=ユーザ情報.html class="btn btn-primary">詳細</a>
+      <a href=更新.html class="btn btn-success">更新</a>
+      <a href=削除.html class="btn btn-danger">削除</a></td>
+    </tr>
+    <tr>
+      <td>id0003</td>
+      <td>佐川真司</td>
+      <td>2000年01年01日</td>
+  	  <td>
+  	  <a href=ユーザ情報.html class="btn btn-primary">詳細</a>
+  	  <a href=更新.html class="btn btn-success">更新</a>
+  	  <a href=削除.html class="btn btn-danger">削除</a>
+  	  </td>
+      </tr>
+  </tbody>
+</table>
+</body>
+</html>
+

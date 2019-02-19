@@ -1,0 +1,76 @@
+
+.logout{
+	text-align: right;
+	background-color: gray;
+}
+
+.logout2{
+	color: red;
+	text-decoration: underline;
+	margin-left: 2em;
+	font-size: 100%;
+}
+
+.size{
+	font-size: 100%;
+}
+
+.title {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+.login{
+	font-size: 25px;
+	margin-top: 1em;
+}
+
+.position{
+	text-align: right;
+}
+
+.ID{
+	margin-right: 4em;
+	margin-bottom: 1em;
+}
+
+.name{
+	margin-right: 4em;
+	margin-bottom: 1em;
+}
+
+.day{
+	margin-right: 4em;
+}
+
+.newuser{
+	text-align: right;
+	margin-right: 3em;
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+.right{
+	text-align: right;
+}
+
+.sarch{
+	margin-right: 2em;
+	margin-bottom: 1em;
+}
+
+.a{
+	margin-left: 2em;
+}
+.form{
+	margin-left: 1em;
+	float: left;
+	padding-right: 20px;
+}
+
+.form1{
+	margin-left: 1em;
+	float: left;
+	padding-right: 35px;
+}

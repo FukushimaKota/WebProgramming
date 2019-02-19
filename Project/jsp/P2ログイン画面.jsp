@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
 <!DOCTYPE html>
 
 <html>
@@ -6,17 +10,22 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="../CSS/style.css">
 <title>ユーザ一覧</title>
+
+<div class=logout2>
+<imput type="button" class=logout >ログアウト</imput>
+</div>
+
 </head>
-
-<button type="button" class=a >ログアウト</button>
-<!-- btn btn-danger -->
-
 <h1 class=title>ユーザ一覧</h1>
+<div class=right>
+<button class=Newuser type="button" class=logout >新規登録</button>
+</div>
 <body>
 <form action="/Example/Part1.jsp" method="post">
 ログインID<input type="text" name="id" ><br>
 パスワード<input type="password" name="password"><br>
 生年月日<input ><br>
+
 <input type="submit" value="検索">
 </form>
 
@@ -54,3 +63,7 @@
 </body>
 </html>
 
+
+
+<!-- 生年月日
+ログアウトが右 -->

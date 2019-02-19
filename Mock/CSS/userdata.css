@@ -1,0 +1,34 @@
+.logout{
+	text-align: right;
+	background-color: gray;
+}
+
+.logout2{
+	color: red;
+	text-decoration: underline;
+	margin-left: 2em;
+	font-size: 100%;
+}
+.size{
+	font-size: 100%;
+}
+
+/* タイトル */
+.title {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+.a {
+
+}
+
+.sentence {
+
+   text-align: center;
+}
+
+return{
+	text-decoration: underline;
+}
