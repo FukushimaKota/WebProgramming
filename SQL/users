@@ -1,20 +1,27 @@
-CREATE TABLE user(
-id SERIAL,
-login_id varchar(255) UNIQUE NOT NULL,
-name varchar(255) NOT NULL,
-birth_date DATE NOT NULL,
-password varchar(255) NOT NULL,
-create_date DATETIME NOT NULL,
-update_date DATETIME NOT NULL
-);
+CREATE TABLE user(id SERIAL　PRIMARY KEY UNIQUE NOT NULL　,login_id varchar(255)　UNIQUE NOT NULL　IDENTITY(1,1),name varchar(255)　NOT NULL　,birth_date DATE　NOT NULL　,password varchar(255)　NOT NULL　,create_date DATETIME　NOT NULL　,update_date DATETIME　NOT NULL);
+
+INSERT INTO user VALUES (null,'admin','管理者',null,'null',null,null);
 
 
-INSERT INTO user VALUES (
-1,
-'admin',
-'管理者',
-'2000/1/11',
-'aaa',
-'2009-3-7 8:2:9',
-'2009-3-7 8:2:9'
-);
+
+CREATE TABLE user(id SERIAL　,login_id varchar(255)　,name varchar(255)　,birth_date DATE　,password varchar(255)　,create_date DATETIME　,update_date DATETIME　);
+
+
+
+
+
+
+CREATE TABLE user(id SERIAL ,login_id varchar(255)　UNIQUE NOT NULL　,name varchar(255) NOT NULL　,birth_date DATE　NOT NULL　,password varchar(255) 　NOT NULL　,create_date DATETIME　NOT NULL　,update_date DATETIME　NOT NULL　);
+
+INSERT INTO user VALUES (null,'admin','管理者',null,'null',null,null);
+
+
+'UNIQUE　NOT NULL ,login_id varchar(255)　UNIQUE NOT NULL　,name varchar(255)
+
+
+
+
+
+
+CREATE TABLE user(id SERIAL,login_id varchar(255),name varchar(255),birth_date DATE,password varchar(255),create_date DATETIME,update_date DATETIME);
+INSERT INTO user VALUES (null,'admin','管理者',null,'null',null,null);
