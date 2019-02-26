@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="../CSS/userlist.css">
+<link rel="stylesheet" href="Mock/CSS/userlist.css">
 <title>ユーザ一覧</title>
 
 </head>
@@ -12,8 +14,7 @@
 <body>
 <div class=logout>
 <header >
-<h1 class=size>ユーザ名さん <a class=logout2 href="ログイン画面.html">ログアウト</a>
-</h1>
+<h1 class=size>ユーザ名さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
 </header>
 </div>
 <form action="Example/WebContent/Mock/html/ログイン画面.html" method="post">
@@ -22,7 +23,7 @@
 </div>
 
 <div class=newuser>
-<a href=新規登録.html>新規登録</a>
+<a href=NewUserServlet>新規登録</a>
 </div>
 
 <div class=ID>
@@ -65,27 +66,29 @@
       <td>id0001</td>
       <td>田中太郎</td>
       <td>1989年04月26日</td>
-	  <td><a href=ユーザ情報.html class="btn btn-primary">詳細</a>
-	  <a href=更新.html class="btn btn-success">更新</a>
-	  <a href=削除.html class="btn btn-danger">削除</a>
+	  <td>
+  	  <a href="ReferenceServlet" class="btn btn-primary">詳細</a>
+  	  <a href="UpdateServlet" class="btn btn-success">更新</a>
+  	  <a href="DeleateServlet" class="btn btn-danger">削除</a>
 	</td>
     </tr>
     <tr>
       <td>id0002</td>
       <td>佐藤二郎</td>
       <td>2001年11月12日</td>
-      <td><a href=ユーザ情報.html class="btn btn-primary">詳細</a>
-      <a href=更新.html class="btn btn-success">更新</a>
-      <a href=削除.html class="btn btn-danger">削除</a></td>
+      <td>
+  	  <a href="ReferenceServlet" class="btn btn-primary">詳細</a>
+  	  <a href="UpdateServlet" class="btn btn-success">更新</a>
+  	  <a href="DeleateServlet" class="btn btn-danger">削除</a>
     </tr>
     <tr>
       <td>id0003</td>
       <td>佐川真司</td>
       <td>2000年01年01日</td>
   	  <td>
-  	  <a href=ユーザ情報.html class="btn btn-primary">詳細</a>
-  	  <a href=更新.html class="btn btn-success">更新</a>
-  	  <a href=削除.html class="btn btn-danger">削除</a>
+  	  <a href="ReferenceServlet" class="btn btn-primary">詳細</a>
+  	  <a href="UpdateServlet" class="btn btn-success">更新</a>
+  	  <a href="DeleateServlet" class="btn btn-danger">削除</a>
   	  </td>
       </tr>
   </tbody>
