@@ -48,3 +48,7 @@
  </div>
  </body>
 </html>
+
+
+<!-- <p><input type="text" name="loginId" id="inputLoginId" class="input" placeholder="ログインID" required autofocus></p>
+<p><input type="password" name="password" id="inputPassword" class="input" placeholder="パスワード" required></p> -->

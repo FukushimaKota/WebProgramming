@@ -18,33 +18,45 @@
 <h1 class=title>ユーザ新規登録</h1>
 <form>
 
+<c:if test="${errMsg != null}" >
+	    <div class="error" role="alert">
+		  ${errMsg}
+		</div>
+	</c:if>
+
 <div class=a>
 <label for="ID"></label>
-ログインID<input class=b type="text" name="ログインID" required="required"></input>
+<!-- ログインID<input class=b type="text" name="ログインID" required="required"></input> -->
+ログインID<input type="text" name="loginId" id="inputLoginId" class="b" required autofocus>
 </div>
 
 <div class=a>
 <label for="password1"></label>
-パスワード<input class=b type="password" name="パスワード" required="required"></input>
+<!-- パスワード<input class=b type="password" name="パスワード" required="required"></input> -->
+パスワード<input type="password" name="password" id="inputPassword" class="b"  required>
 </div>
 
  <div class=a>
-<label for="password2"></label>
-パスワード(確認)<input class=c type="password" name="パスワード(確認)" required="required"></input>
+<label for="repassword"></label>
+<!-- パスワード(確認)<input class=c type="repassword" name="パスワード(確認)" required="required"></input> -->
+パスワード(確認)<input type="repassword" name="repassword" id="input" class="c"  required>
 </div>
 
 <div class=a>
-<label for="user_name"></label>
-ユーザ名<input class=d type="text" name="ユーザ名" required="required"></input>
+<label for="username"></label>
+<!-- ユーザ名<input class=d type="text" name="ユーザ名" required="required"></input> -->
+ユーザ名<input type="text" name="name" id="inputname" class="d"  required>
 </div>
 
 <div class=a>
 <label for="day"></label>
-生年月日<input class=d type="text" name="生年月日" required="required"></input>
+<!-- 生年月日<input class=d type="text" name="生年月日" required="required"></input> -->
+生年月日<input type="text" name="生年月日" id="inputday" class="d"  required>
 </div>
 
 <div class=submit>
-<input type="submit" class="button" title="登録" value="登録"></input>
+<!-- <input type="submit" class="button" title="登録" value="登録"></input> -->
+<button class="button" type="submit">登録</button>
 </div>
 
 <div class="return">
