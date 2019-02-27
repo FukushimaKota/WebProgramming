@@ -52,4 +52,3 @@ public class DeleateServlet extends HttpServlet {
 	}
 
 }
-
