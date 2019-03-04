@@ -11,7 +11,7 @@
 
 <div class=logout>
 <header >
-<h1 class=size>ユーザ名さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
+<h1 class=size>${userInfo.name}さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
 </header>
 </div>
 
@@ -19,10 +19,14 @@
 
 <div class=sentence>
 <p>ログインID:Id0001</p>
+
 <p>を本当に削除してよろしいでしょうか。</p>
+
+
 </div>
 <div class=button>
-<input class=a type="submit" value="キャンセル"><input class=b type="submit" value="OK">
+<a href="UserListServlet"  class=a type="submit">キャンセル</a>
+<a href="UserListServlet" class=b type="submit">OK</a>
 </div>
 </body>
 </html>

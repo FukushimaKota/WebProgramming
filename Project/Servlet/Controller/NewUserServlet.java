@@ -41,34 +41,54 @@ public class NewUserServlet extends HttpServlet {
 		}
 
 		// フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Project/jsp/NewUser.jsp");
-				dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewUser.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		doGet(request, response);
 
 		// リクエストパラメータの文字コードを指定
         request.setCharacterEncoding("UTF-8");
 
-		// リクエストパラメータの入力項目を取得
+		//リクエストパラメーターの取得
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
 		String repassword = request.getParameter("repassword");
-		String username = request.getParameter("username");
-		String day = request.getParameter("day");
+		String name = request.getParameter("name");
+		String birthday = request.getParameter("birthday");
 
+		UserDao user = new UserDao();
+		//空欄な場合エラー
+		boolean a1 = loginId.isEmpty();
+		boolean a2 = password.isEmpty();
+		boolean a3 = repassword.isEmpty();
+		boolean a4 = name.isEmpty();
+		boolean a5 = birthday.isEmpty();
+		String a6 = user.IdSearch(loginId);
+		//loginIdがDBに既にある　　　id==id
+		//全id取り出し。
+//		UserDao user = new UserDao();
+//		String a6 = user.IdSearch(loginId);
 
-		UserDao userDao = new UserDao();
-		//User user = userDao.findByLoginInfo(loginId, password,repassword,username,day);
-		//if (user == null) {
+		if(a1 || a2 || a3 || a4 || a5 || !password.equals(repassword)||a6.equals(loginId)) {
 			// リクエストスコープにエラーメッセージをセット
 			request.setAttribute("errMsg", "入力された内容は正しくありません。");
-		//}
-	}
 
+			// フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewUser.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+
+		//データ追加（insert)
+		user.Insert(loginId,password,name,birthday);
+
+		// フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserList.jsp");
+		dispatcher.forward(request, response);
+		return;
+	}
 }

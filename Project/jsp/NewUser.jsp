@@ -11,15 +11,15 @@
 
 <div class=logout>
 <header >
-<h1 class=size>ユーザ名さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
+<h1 class=size>${userInfo.name}さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
 </header>
 </div>
 
 <h1 class=title>ユーザ新規登録</h1>
-<form>
+<form action="NewUserServlet"method="post">
 
 <c:if test="${errMsg != null}" >
-	    <div class="error" role="alert">
+	    <div class="error"role="alert">
 		  ${errMsg}
 		</div>
 	</c:if>
@@ -27,31 +27,31 @@
 <div class=a>
 <label for="ID"></label>
 <!-- ログインID<input class=b type="text" name="ログインID" required="required"></input> -->
-ログインID<input type="text" name="loginId" id="inputLoginId" class="b" required autofocus>
+ログインID<input type="text" name="loginId" id="inputLoginId" class="b" >
 </div>
 
 <div class=a>
 <label for="password1"></label>
 <!-- パスワード<input class=b type="password" name="パスワード" required="required"></input> -->
-パスワード<input type="password" name="password" id="inputPassword" class="b"  required>
+パスワード<input type="password" name="password" id="inputPassword" class="b" >
 </div>
 
  <div class=a>
 <label for="repassword"></label>
 <!-- パスワード(確認)<input class=c type="repassword" name="パスワード(確認)" required="required"></input> -->
-パスワード(確認)<input type="repassword" name="repassword" id="input" class="c"  required>
+パスワード(確認)<input type="repassword" name="repassword" id="input" class="c" >
 </div>
 
 <div class=a>
 <label for="username"></label>
 <!-- ユーザ名<input class=d type="text" name="ユーザ名" required="required"></input> -->
-ユーザ名<input type="text" name="name" id="inputname" class="d"  required>
+ユーザ名<input type="text" name="name" id="inputname" class="d"  >
 </div>
 
 <div class=a>
-<label for="day"></label>
+<label for="birthday"></label>
 <!-- 生年月日<input class=d type="text" name="生年月日" required="required"></input> -->
-生年月日<input type="text" name="生年月日" id="inputday" class="d"  required>
+生年月日<input type="text" name="birthday" id="inputday" class="d"  >
 </div>
 
 <div class=submit>

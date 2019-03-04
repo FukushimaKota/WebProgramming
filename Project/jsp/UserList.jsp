@@ -14,10 +14,10 @@
 <body>
 <div class=logout>
 <header >
-<h1 class=size>ユーザ名さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
+<h1 class=size>${userInfo.name}さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
 </header>
 </div>
-<form action="Example/WebContent/Mock/html/ログイン画面.html" method="post">
+<form action="UserListServlet" method="post">
 <div class=title>
 <h1>ユーザ一覧</h1>
 </div>
@@ -28,26 +28,26 @@
 
 <div class=ID>
 <label for="ID"></label>
-<p class=form>ログインID</p><input type="text" name="ログインID" required="required" placeholder="ログインID"></input>
+<p class=form>ログインID</p><input type="text" name="LoginId" placeholder="ログインID"></input>
 </div>
 
 <div class=name>
 <label for="user_name"></label>
-<p class=form1>ユーザ名</p><input type="text" name="ユーザ名" required="required" placeholder="ユーザ名"></input>
+<p class=form1>ユーザ名</p><input type="text" name="name" placeholder="ユーザ名"></input>
 </div>
 
 <p class=form>生年月日</p>
 <div class=day>
 <figure class=form>
 <label for=day1></label>
-<input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+<input type="text" name="birthday" placeholder="年/月/日"></input>
 </figure>
 
 <p class=form>〜</p>
 
 <figure class=form>
 <label for=day2></label>
-<input type="text" name="生年月日" required="required" placeholder="年/月/日"></input>
+<input type="text" name="birthday2 placeholder="年/月/日"></input>
 </figure>
 </div>
 </form>
@@ -63,13 +63,19 @@
   </thead>
   <tbody>
     <tr>
-      <td>id0001</td>
-      <td>田中太郎</td>
-      <td>1989年04月26日</td>
+    <td>id0001</td>
+    <td>田中太郎</td>
+    <td>1989年04月26日</td>
+     <%-- <td>${user.loginId}</td>
+     <td>${user.name}</td>
+     <td>${user.birthDate}</td> --%>
 	  <td>
-  	  <a href="ReferenceServlet" class="btn btn-primary">詳細</a>
+  	  <a href="UserDataServlet" class="btn btn-primary">詳細</a>
   	  <a href="UpdateServlet" class="btn btn-success">更新</a>
-  	  <a href="DeleateServlet" class="btn btn-danger">削除</a>
+  	  <a href="DeleteServlet" class="btn btn-danger">削除</a>
+  	 <%--  href="UserDetailServlet?id=${user.id}"
+  	  href="UserUpdateServlet?id=${user.id}"
+  	  href="DeleteServlet?id=${user.id}" --%>
 	</td>
     </tr>
     <tr>
@@ -77,18 +83,18 @@
       <td>佐藤二郎</td>
       <td>2001年11月12日</td>
       <td>
-  	  <a href="ReferenceServlet" class="btn btn-primary">詳細</a>
+  	  <a href="UserDataServlet" class="btn btn-primary">詳細</a>
   	  <a href="UpdateServlet" class="btn btn-success">更新</a>
-  	  <a href="DeleateServlet" class="btn btn-danger">削除</a>
+  	  <a href="DeleteServlet" class="btn btn-danger">削除</a>
     </tr>
     <tr>
       <td>id0003</td>
       <td>佐川真司</td>
       <td>2000年01年01日</td>
   	  <td>
-  	  <a href="ReferenceServlet" class="btn btn-primary">詳細</a>
+  	  <a href="UserDataServlet" class="btn btn-primary">詳細</a>
   	  <a href="UpdateServlet" class="btn btn-success">更新</a>
-  	  <a href="DeleateServlet" class="btn btn-danger">削除</a>
+  	  <a href="DeleteServlet" class="btn btn-danger">削除</a>
   	  </td>
       </tr>
   </tbody>
