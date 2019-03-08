@@ -10,41 +10,40 @@
 </head>
 <body>
 
-<div class=logout>
-<header >
-<h1 class=size>${userInfo.name}さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
-</header>
+<div class="logout">
+<h1 class="size">${userInfo.name}さん <a class="logout2" href="LogoutServlet">ログアウト</a></h1>
 </div>
 
-<div class=title>
+<div class="title">
 <h1>ユーザ情報詳細参照</h1>
 </div>
 
-<div class=aa>
 
-<div class=a>
-ログインID<nobr class=sentence>Id0001</nobr>
+<div class="aa">
+
+<div class="a">
+ログインID<nobr class="sentence">${user.loginId}</nobr>
 </div>
 
-<div class=a>
-ユーザ名<nobr class=sentence>田中太郎</nobr>
+<div class="a">
+ユーザ名<nobr class="sentence">${user.name}</nobr>
 </div>
 
-<div class=a>
-生年月日<nobr class=sentence>1989年４月26日</nobr>
+<div class="a">
+生年月日<nobr class="sentence">${user.birthDate}</nobr>
 </div>
 
-<div class=a>
-登録日時<nobr class=sentence>2017年01月01日10:50</nobr>
+<div class="a">
+登録日時<nobr class="sentence">${user.createDate}</nobr>
 </div>
 
-<div class=a>
-更新日時<nobr class=sentence>2017年02月01日01:05</nobr>
-</div>
+<div class="a">
+更新日時<nobr class="sentence">${user.updateDate}</nobr>
 </div>
 
  <div class="return">
 <p><a href=UserListServlet>戻る</a></p>
+ </div>
  </div>
  </body>
 </html>

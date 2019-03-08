@@ -9,24 +9,25 @@
 </head>
 <body>
 
-<div class=logout>
+<div class="logout">
 <header >
-<h1 class=size>${userInfo.name}さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
+<h1 class="size">${userInfo.name}さん <a class="logout2" href="LogoutServlet">ログアウト</a></h1>
 </header>
 </div>
 
-<h1 class=title>ユーザ削除確認</h1>
+<h1 class="title">ユーザ削除確認</h1>
 
-<div class=sentence>
-<p>ログインID:Id0001</p>
+<div class="sentence">
+<p>ログインID:${user.loginId}</p>
 
 <p>を本当に削除してよろしいでしょうか。</p>
 
 
 </div>
-<div class=button>
-<a href="UserListServlet"  class=a type="submit">キャンセル</a>
-<a href="UserListServlet" class=b type="submit">OK</a>
+<div class="button">
+<a href="UserListServlet" class="btn btn-primary" role="button">キャンセル</a>
+<a href="UserListServlet" class="btn btn-primary" role="button" >OK</a>
+<!-- type="submit" title="OK" value="OK" onclick='return confirm("本当に削除しますか？");'/ -->
 </div>
 </body>
 </html>

@@ -37,22 +37,22 @@ public class UserDao {
             // SELECT文を準備
             String sql = "SELECT * FROM user WHERE login_id = ? and password = ?";
 
-//    		//ハッシュを生成したい元の文字列
-//    		String source = "password";
-//    		//ハッシュ生成前にバイト配列に置き換える際のCharset
-//    		Charset charset = StandardCharsets.UTF_8;
-//    		//ハッシュアルゴリズム
-//    		String algorithm = "MD5";
-//    		//ハッシュ生成処理
-//    		byte[] bytes = MessageDigest.getInstance(algorithm).digest(source.getBytes(charset));
-//    		String result = DatatypeConverter.printHexBinary(bytes);
-//
-//    		String password2 = result;
+    		//ハッシュを生成したい元の文字列
+    		String source = "password";
+    		//ハッシュ生成前にバイト配列に置き換える際のCharset
+    		Charset charset = StandardCharsets.UTF_8;
+    		//ハッシュアルゴリズム
+    		String algorithm = "MD5";
+    		//ハッシュ生成処理
+    		byte[] bytes = MessageDigest.getInstance(algorithm).digest(source.getBytes(charset));
+    		String result = DatatypeConverter.printHexBinary(bytes);
+
+    		String password2 = result;
 
             // SELECTを実行し、結果表を取得
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setString(1, loginId);
-            pStmt.setString(2, password);//2
+            pStmt.setString(2, password2);
             ResultSet rs = pStmt.executeQuery();
 
             // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
@@ -67,9 +67,9 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
-//        } catch (NoSuchAlgorithmException e) {
-//			// TODO 自動生成された catch ブロック
-//			e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
 		} finally {
             // データベース切断
             if (conn != null) {
@@ -81,7 +81,7 @@ public class UserDao {
                 }
             }
         }
-		//return null;
+		return null;
     }
 
 //新規登録
@@ -98,7 +98,6 @@ public class UserDao {
     		Charset charset = StandardCharsets.UTF_8;
     		//ハッシュアルゴリズム
     		String algorithm = "MD5";
-
     		//ハッシュ生成処理
     		byte[] bytes = MessageDigest.getInstance(algorithm).digest(source.getBytes(charset));
     		String result = DatatypeConverter.printHexBinary(bytes);
@@ -174,55 +173,105 @@ public class UserDao {
 
 
 //ユーザ一覧
-public  String UserList(String loginId,String name,String birthday ,String birthday2){
-	 Connection conn = null;
-    try {
-        // データベースへ接続
-        conn = DBManager.getConnection();
+//検索機能
+	public  String UserList(String loginId,String name,String birthday ,String birthday2){
+		 Connection conn = null;
+	    try {
+	        // データベースへ接続
+	        conn = DBManager.getConnection();
 
-        // SELECT文を準備
-        String sql = "SELECT * FROM user WHERE login_id = ? , name=? , birth_date=?";
+	        // SELECT文を準備
+	        String sql = "SELECT * FROM user WHERE login_id = ? , name=? , birth_date=?";
 
-        // SELECTを実行し、結果表を取得
-        PreparedStatement pStmt = conn.prepareStatement(sql);
-        pStmt.setString(1, loginId);
-        pStmt.setString(2, name);
-        pStmt.setString(3, birthday);
-        pStmt.setString(3, birthday2);
-        ResultSet rs = pStmt.executeQuery();
+	        // SELECTを実行し、結果表を取得
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+	        pStmt.setString(1, loginId);
+	        pStmt.setString(2, name);
+	        pStmt.setString(3, birthday);
+	        pStmt.setString(3, birthday2);
+	        ResultSet rs = pStmt.executeQuery();
 
-        // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
-        if (!rs.next()) {
-            return null;
-        }
+	        // 主キーに紐づくレコードは1件のみなので、rs.next()は1回だけ行う
+	        if (!rs.next()) {
+	            return null;
+	        }
 
-        while (rs.next()) {
-        String loginIdData = rs.getString("login_id");
-        String username = rs.getString("name");
-        String Birthday =rs.getString("birthday");
-        String Birthday2 =rs.getString("birthday2");
+	        while (rs.next()) {
+	        String loginIdData = rs.getString("login_id");
+	        String username = rs.getString("name");
+	        String Birthday =rs.getString("birthday");
+	        String Birthday2 =rs.getString("birthday2");
 
-        return rs.getString(loginIdData);
-        }
+	        return rs.getString(loginIdData);
+	        }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return null;
-    } finally {
-        // データベース切断
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-    }
-	return loginId;
-}
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return null;
+	    } finally {
+	        // データベース切断
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	                return null;
+	            }
+	        }
+	    }
+		return loginId;
+	}
 
-//全ユーザ
+//ユーザ一覧 全ユーザーを最初に公開。
+
+//public String AllUser () {
+//
+//  Connection conn = null;
+//
+//  try {
+//      // データベースへ接続
+//      conn = DBManager.getConnection();
+//
+//      // SELECT文を準備
+//      // TODO: 未実装：管理者以外を取得するようSQLを変更する
+//      String sql = "SELECT * FROM user WHERE 1 < id";
+//
+//       // SELECTを実行し、結果表を取得
+//      Statement stmt = conn.createStatement();
+//      ResultSet rs = stmt.executeQuery(sql);
+//
+//      // 結果表に格納されたレコードの内容を
+//      // Userインスタンスに設定し、ArrayListインスタンスに追加
+//      while (rs.next()) {
+//          int id = rs.getInt("id");
+//          String login_Id = rs.getString("login_id");
+//          String nameData = rs.getString("name");
+//          Date birthDate = rs.getDate("birth_date");
+//          String password = rs.getString("password");
+//          String createDate = rs.getString("create_date");
+//          String updateDate = rs.getString("update_date");
+//
+//          User user = new User(id, login_Id, nameData, birthDate, password, createDate, updateDate);
+//
+//
+//      }
+//  } catch (SQLException e) {
+//      e.printStackTrace();
+//      return null;
+//  } finally {
+//      // データベース切断
+//      if (conn != null) {
+//          try {
+//              conn.close();
+//          } catch (SQLException e) {
+//              e.printStackTrace();
+//              return null;
+//          }
+//      }
+//  }
+//return null;
+//}
+
 public List<User> AllUser() {
     Connection conn = null;
     List<User> userList = new ArrayList<User>();
@@ -249,6 +298,7 @@ public List<User> AllUser() {
             String password = rs.getString("password");
             String createDate = rs.getString("create_date");
             String updateDate = rs.getString("update_date");
+
             User user = new User(id, loginId, name, birthDate, password, createDate, updateDate);
 
             userList.add(user);
@@ -270,14 +320,53 @@ public List<User> AllUser() {
     return userList;
 }
 
+//ユーザ情報
+public User UserData(String id){
+	Connection conn = null;
+	 try {
+      // データベースへ接続
+      conn = DBManager.getConnection();
+      String sql = "SELECT * FROM user WHERE id = ?";
+      // SELECTを実行し、結果表を取得
+     PreparedStatement stmt = conn.prepareStatement(sql);
+     stmt.setString(1, id);
+     ResultSet rs = stmt.executeQuery();
 
-//更新
-public void UpDate (String password,String name,String birthday){
+     // 結果表に格納されたレコードの内容
+     if(rs.next()){
+         int ida = rs.getInt("id");
+         String loginId = rs.getString("login_id");
+         String name = rs.getString("name");
+         Date birthDate = rs.getDate("birth_date");
+         String password = rs.getString("password");
+         String createDate = rs.getString("create_date");
+         String updateDate = rs.getString("update_date");
+
+         return  new User(ida, loginId, name, birthDate, password, createDate, updateDate);
+     }
+ } catch (SQLException e) {
+     e.printStackTrace();
+     return null;
+ } finally {
+     // データベース切断
+     if (conn != null) {
+         try {
+             conn.close();
+         } catch (SQLException e) {
+             e.printStackTrace();
+             return null;
+         }
+     }
+ }
+	 return null;
+}
+
+public void Update (String password,String name,String birthday){
 	Connection conn = null;
     try {
     	// データベースへ接続
     	conn = DBManager.getConnection();
-        String sql = "UPDATE user SET name='?', birth_date = '?', password = '?', update_date = now() WHERE login_id ='?')";
+        String sql = "UPDATE user SET name = ?,birth_date = ?,password = ?,update_date = now() WHERE id = ?";
 
 		//ハッシュを生成したい元の文字列
 		String source = "password";
@@ -285,14 +374,14 @@ public void UpDate (String password,String name,String birthday){
 		Charset charset = StandardCharsets.UTF_8;
 		//ハッシュアルゴリズム
 		String algorithm = "MD5";
-
 		//ハッシュ生成処理
 		byte[] bytes = MessageDigest.getInstance(algorithm).digest(source.getBytes(charset));
 		String result = DatatypeConverter.printHexBinary(bytes);
 
 		String password2 = result;
 
-        // usdateを実行
+        //
+		//UPDATEを実行
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, name);
         stmt.setString(2, birthday);
@@ -301,7 +390,6 @@ public void UpDate (String password,String name,String birthday){
 
         // 追加された行数を出力
         System.out.println(result2);
-
         stmt.close();
     } catch (SQLException e) {
         e.printStackTrace();
@@ -319,130 +407,22 @@ public void UpDate (String password,String name,String birthday){
     }
 }
 
-//削除
-public void Delete(String id){
-	  Connection conn = null;
-	   try {
-	         // データベースへ接続
-	         conn = DBManager.getConnection();
-	         String sql = "DELETE FROM user WHERE id = ?";
-
-	         // SELECTを実行し、結果表を取得
-	        PreparedStatement stmt = conn.prepareStatement(sql);
-	        stmt.setString(1, id);
-	        int result = stmt.executeUpdate();
-
-	        // 削除された行数を出力
-	        System.out.println(result);
-	        stmt.close();
-
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        // データベース切断
-	        if (conn != null) {
-	            try {
-	                conn.close();
-	            } catch (SQLException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	    }
-	}
-
-
-
-public List<User> a(String loginID,String name,String birthday,String birthday2) {
-    Connection conn = null;
-    List<User> userList = new ArrayList<User>();
-
-	boolean bool1 = loginID.isEmpty();
-	boolean bool2 = name.isEmpty();
-	boolean bool3 = birthday.isEmpty();
-	boolean bool4 = birthday2.isEmpty();
-
-    try {
-        // データベースへ接続
-        conn = DBManager.getConnection();
-
-        // SELECT文を準備
-        // TODO: 未実装：管理者以外を取得するようSQLを変更する
-        String sql = "SELECT * FROM user WHERE 1 < id";
-
-
-        if(bool1 == false) {
-        	sql += " and login_id = '"+loginID+"' ";
-        }
-        if(bool2 == false) {
-        	sql += " and name LIKE '%' '"+name+"' '%' ";
-        }
-        if(bool3 == false) {
-        	sql += " and birth_date >= '"+birthday+"' ";
-        }
-        if(bool4 == false) {
-        	sql += " and birth_date <= '"+birthday2+"' ";
-        }
-        PreparedStatement stmt = conn.prepareStatement(sql);
-
-        ResultSet rs = stmt.executeQuery(sql);
-
-        // 結果表に格納されたレコードの内容を
-        // Userインスタンスに設定し、ArrayListインスタンスに追加
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String loginId = rs.getString("login_id");
-            String name2 = rs.getString("name");
-            Date birthDate = rs.getDate("birth_date");
-            String password = rs.getString("password");
-            String createDate = rs.getString("create_date");
-            String updateDate = rs.getString("update_date");
-            User user = new User(id, loginId, name2, birthDate, password, createDate, updateDate);
-
-            userList.add(user);
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return null;
-    } finally {
-        // データベース切断
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-    }
-    return userList;
-}
-
-//詳細
-public User Data(String id){
+public User Delete(String id){
 	Connection conn = null;
 	 try {
          // データベースへ接続
          conn = DBManager.getConnection();
-         String sql = "SELECT * FROM user WHERE id = ?";
+         String sql = "DELETE FROM user WHERE id = ?";
          // SELECTを実行し、結果表を取得
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setString(1, id);
-        ResultSet rs = stmt.executeQuery();
+        int result = stmt.executeUpdate();
+        // 追加された行数を出力
+        System.out.println(result);
+        stmt.close();
 
-        // 結果表に格納されたレコードの内容を
-        if(rs.next()){
-            int ida = rs.getInt("id");
-            String loginId = rs.getString("login_id");
-            String name = rs.getString("name");
-            Date birthDate = rs.getDate("birth_date");
-            String password = rs.getString("password");
-            String createDate = rs.getString("create_date");
-            String updateDate = rs.getString("update_date");
-            return  new User(ida, loginId, name, birthDate, password, createDate, updateDate);
-        }
     } catch (SQLException e) {
         e.printStackTrace();
-        return null;
     } finally {
         // データベース切断
         if (conn != null) {
@@ -450,12 +430,10 @@ public User Data(String id){
                 conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-                return null;
             }
         }
     }
-	 return null;
+	return null;
 }
-
 
 }

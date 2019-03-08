@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		// フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Project/jsp/Login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -63,18 +63,18 @@ public class LoginServlet extends HttpServlet {
 
 		// リクエストパラメータの入力項目を引数に渡して、Daoのメソッドを実行
 		UserDao userDao = new UserDao();
-		User user = userDao.findByLoginInfo(loginId, password);
+		User user = userDao.LoginData(loginId, password);
 
 		/** テーブルに該当のデータが見つからなかった場合 **/
 		if (user == null) {
 			// リクエストスコープにエラーメッセージをセット
-			request.setAttribute("errMsg", "ログインに失敗しました。");
+			request.setAttribute("errMsg", "ログインIDまたはパスワードが異なります");
 
 			// ログインjspにフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Project/jsp/Login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 			dispatcher.forward(request, response);
 			return;
-		}
+		}else {
 
 		/** テーブルに該当のデータが見つかった場合 **/
 		// セッションにユーザの情報をセット
@@ -83,5 +83,6 @@ public class LoginServlet extends HttpServlet {
 
 		// ユーザ一覧のサーブレットにリダイレクト
 		response.sendRedirect("UserListServlet");
+		}
 	}
 }

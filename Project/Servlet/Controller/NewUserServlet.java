@@ -61,26 +61,25 @@ public class NewUserServlet extends HttpServlet {
 		String birthday = request.getParameter("birthday");
 
 		UserDao user = new UserDao();
-		//空欄な場合エラー
+
+		//空欄な場合
 		boolean a1 = loginId.isEmpty();
 		boolean a2 = password.isEmpty();
 		boolean a3 = repassword.isEmpty();
 		boolean a4 = name.isEmpty();
 		boolean a5 = birthday.isEmpty();
 		String a6 = user.IdSearch(loginId);
-		//loginIdがDBに既にある　　　id==id
-		//全id取り出し。
-//		UserDao user = new UserDao();
-//		String a6 = user.IdSearch(loginId);
+		//被ってなきゃa６がnullを返す。
 
-		if(a1 || a2 || a3 || a4 || a5 || !password.equals(repassword)||a6.equals(loginId)) {
+		//エラーにする時。
+		if(a1 || a2 || a3 || a4 || a5 || !password.equals(repassword)||a6!=null) {
 			// リクエストスコープにエラーメッセージをセット
 			request.setAttribute("errMsg", "入力された内容は正しくありません。");
 
 			// フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/NewUser.jsp");
 			dispatcher.forward(request, response);
-			return;
+			return ;
 		}
 
 		//データ追加（insert)

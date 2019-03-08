@@ -41,6 +41,7 @@ public class UserListServlet extends HttpServlet {
 			return;
 		}
 
+		//全件表示
 		// ユーザ一覧情報を取得
 		UserDao userDao = new UserDao();
 		List<User> userList = userDao.AllUser();
@@ -48,9 +49,10 @@ public class UserListServlet extends HttpServlet {
 		// リクエストスコープにユーザ一覧情報をセット
 		request.setAttribute("userList", userList);
 
-		// ユーザ一覧のjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserList.jsp");
-		dispatcher.forward(request, response);
+
+		// フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/UserList.jsp");
+				dispatcher.forward(request, response);
 	}
 
 	/**
@@ -61,20 +63,24 @@ public class UserListServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		// リクエストパラメータの入力項目を取得
-		String loginId = request.getParameter("LoginID");
+		String loginId = request.getParameter("loginID");
 		String name = request.getParameter("name");
 		String birthday = request.getParameter("birthday");
 		String birthday2 = request.getParameter("birthday2");
 
 		// ユーザ一覧情報を取得
 		UserDao userDao = new UserDao();
-		List<User> userList = userDao.a(loginId,name,birthday,birthday2);
+		String userList = userDao.UserList(loginId,name,birthday,birthday2);
+
+//		List<User> userList = userDao.findByInput(loginId,name,birthday,birthday2);
+
+
 
 		// リクエストスコープにユーザ一覧情報をセット
 		request.setAttribute("userList", userList);
 
 		// ユーザ一覧のjspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserList.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/UserList.jsp");
 		dispatcher.forward(request, response);
 	}
 }

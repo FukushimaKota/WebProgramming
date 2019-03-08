@@ -9,13 +9,13 @@
 </head>
 <body>
 
-<div class=logout>
+<div class="logout">
 <header >
-<h1 class=size>${userInfo.name}さん <a class=logout2 href="LogoutServlet">ログアウト</a></h1>
+<h1 class=size>${userInfo.name}さん <a class="logout2" href="LogoutServlet">ログアウト</a></h1>
 </header>
 </div>
 
-<h1 class=title>ユーザ新規登録</h1>
+<h1 class="title">ユーザ新規登録</h1>
 <form action="NewUserServlet"method="post">
 
 <c:if test="${errMsg != null}" >
@@ -24,37 +24,33 @@
 		</div>
 	</c:if>
 
-<div class=a>
+<div class="a">
 <label for="ID"></label>
 <!-- ログインID<input class=b type="text" name="ログインID" required="required"></input> -->
-ログインID<input type="text" name="loginId" id="inputLoginId" class="b" >
+ログインID<input type="text" name="loginId" id="inputLoginId" class="b" placeholder="ログインID">
 </div>
 
-<div class=a>
-<label for="password1"></label>
+<div class="a">
 <!-- パスワード<input class=b type="password" name="パスワード" required="required"></input> -->
-パスワード<input type="password" name="password" id="inputPassword" class="b" >
+パスワード<input type="password" name="password" id="inputPassword" class="b" placeholder="パスワード">
 </div>
 
- <div class=a>
-<label for="repassword"></label>
+ <div class="a">
 <!-- パスワード(確認)<input class=c type="repassword" name="パスワード(確認)" required="required"></input> -->
-パスワード(確認)<input type="repassword" name="repassword" id="input" class="c" >
+パスワード(確認)<input type="repassword" name="repassword" id="input" class="c" placeholder="パスワード（確認）">
 </div>
 
-<div class=a>
-<label for="username"></label>
+<div class="a">
 <!-- ユーザ名<input class=d type="text" name="ユーザ名" required="required"></input> -->
-ユーザ名<input type="text" name="name" id="inputname" class="d"  >
+ユーザ名<input type="text" name="name" id="inputname" class="d"  placeholder="ユーザ名">
 </div>
 
-<div class=a>
-<label for="birthday"></label>
+<div class="a">
 <!-- 生年月日<input class=d type="text" name="生年月日" required="required"></input> -->
-生年月日<input type="text" name="birthday" id="inputday" class="d"  >
+生年月日<input type="text" name="birthday" id="inputday" class="d"  placeholder="生年月日">
 </div>
 
-<div class=submit>
+<div class="submit">
 <!-- <input type="submit" class="button" title="登録" value="登録"></input> -->
 <button class="button" type="submit">登録</button>
 </div>
