@@ -75,3 +75,12 @@
 	float: left;
 	padding-right: 35px;
 }
+
+.submit{
+	text-align: right;
+	margin-top:1em;
+	margin-bottom:1em;
+	margin-right: 3em;
+	}
+
+}

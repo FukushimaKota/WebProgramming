@@ -23,12 +23,6 @@
 	</c:if>
 
 	<div class="login-area">
-<!--
-	ログインID<input class="input" type="text" name="id" id="inputLoginId" placeholder="ログインID" required="required"><br>
-	<p><p>
-	パスワード<input class="input" type="password" name="password" placeholder="パスワード" required="required"><br>
-	<p><p>
-	<a href=List.jsp><input class="login" type="submit" value="ログイン"></a> -->
 
 	<p><input type="text" name="loginId" id="inputLoginId" class="input" placeholder="ログインID" required></p>
     <p><input type="password" name="password" id="inputPassword" class="input" placeholder="パスワード" required></p>

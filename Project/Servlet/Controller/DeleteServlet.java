@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,9 +44,9 @@ public class DeleteServlet extends HttpServlet {
 
 		// URLからGETパラメータとしてIDを受け取る
 		String id = request.getParameter("id");
-		UserDao dao = new UserDao();
-		User user = dao.Delete(id);
 
+		UserDao dao = new UserDao();
+		User user = dao.UserData(id);
 		request.setAttribute("user",user);
 
 		// フォワード
@@ -57,15 +58,46 @@ public class DeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// リクエストパラメータの文字コードを指定
+        request.setCharacterEncoding("UTF-8");
 
-		// URLからPOSTパラメータとしてIDを受け取る
-		String id = request.getParameter("id");
+		//リクエストパラメーターの取得
+        String id = request.getParameter("id");
+        String ok = request.getParameter("OK");
 
 		UserDao user = new UserDao();
+
+		//OKな時
+		if(ok!=null&&id!=null) {
+		//消す
 		user.Delete(id);
-		//入った瞬間
+
+		//全件表示
+		// ユーザ一覧情報を取得
+		UserDao userDao = new UserDao();
+		ArrayList<User> userList = userDao.AllUser();
+
+		// リクエストスコープにユーザ一覧情報をセット
+		request.setAttribute("userList", userList);
+
+		// フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserList.jsp");
+		dispatcher.forward(request, response);
+		return ;
+		}else {
+
+		//キャンセルした時
+
+		//全件表示
+		// ユーザ一覧情報を取得
+		UserDao userDao = new UserDao();
+		ArrayList<User> userList = userDao.AllUser();
+
+		// リクエストスコープにユーザ一覧情報をセット
+		request.setAttribute("userList", userList);
 
 		// ユーザ一覧のサーブレットにリダイレクト
 		response.sendRedirect("UserListServlet");
+		}
 	}
 }

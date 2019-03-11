@@ -26,27 +26,22 @@
 
 <div class="a">
 <label for="ID"></label>
-<!-- ログインID<input class=b type="text" name="ログインID" required="required"></input> -->
 ログインID<input type="text" name="loginId" id="inputLoginId" class="b" placeholder="ログインID">
 </div>
 
 <div class="a">
-<!-- パスワード<input class=b type="password" name="パスワード" required="required"></input> -->
 パスワード<input type="password" name="password" id="inputPassword" class="b" placeholder="パスワード">
 </div>
 
  <div class="a">
-<!-- パスワード(確認)<input class=c type="repassword" name="パスワード(確認)" required="required"></input> -->
 パスワード(確認)<input type="repassword" name="repassword" id="input" class="c" placeholder="パスワード（確認）">
 </div>
 
 <div class="a">
-<!-- ユーザ名<input class=d type="text" name="ユーザ名" required="required"></input> -->
 ユーザ名<input type="text" name="name" id="inputname" class="d"  placeholder="ユーザ名">
 </div>
 
 <div class="a">
-<!-- 生年月日<input class=d type="text" name="生年月日" required="required"></input> -->
 生年月日<input type="text" name="birthday" id="inputday" class="d"  placeholder="生年月日">
 </div>
 

@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
+import model.User;
 
 /**
  * Servlet implementation class NewUser
@@ -84,6 +86,14 @@ public class NewUserServlet extends HttpServlet {
 
 		//データ追加（insert)
 		user.Insert(loginId,password,name,birthday);
+
+		//全件表示
+		// ユーザ一覧情報を取得
+		UserDao userDao = new UserDao();
+		ArrayList<User> userList = userDao.AllUser();
+
+		// リクエストスコープにユーザ一覧情報をセット
+		request.setAttribute("userList", userList);
 
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserList.jsp");

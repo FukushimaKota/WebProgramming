@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="model.User" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,13 +18,15 @@
 </div>
 
 <h1 class="title">ユーザ情報更新</h1>
-<form action="NewUserServlet"method="post">
+<form action="UpdateServlet"method="post">
 
 <c:if test="${errMsg != null}" >
 	    <div class="error"role="alert">
 		  ${errMsg}
 		</div>
 	</c:if>
+
+<input type="hidden" value="${user.id}" name=id>
 
 <div class=a>
 ログインID<nobr class="aa" name="loginId">${user.loginId}</nobr>

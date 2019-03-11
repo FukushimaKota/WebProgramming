@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,6 +61,18 @@ public class UserDataServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+
+		//全件表示
+		// ユーザ一覧情報を取得
+		UserDao userDao = new UserDao();
+		ArrayList<User> userList = userDao.AllUser();
+
+		// リクエストスコープにユーザ一覧情報をセット
+		request.setAttribute("userList", userList);
+
+		// ユーザ一覧のjspにフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/UserList.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

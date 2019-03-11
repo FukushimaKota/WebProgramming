@@ -34,7 +34,7 @@
 		<div class="ID">
 			<label for="ID"></label>
 			<p class="form">ログインID</p>
-			<input type="text" name="LoginId" placeholder="ログインID"></input>
+			<input type="text" name="loginId" placeholder="ログインID"></input>
 		</div>
 
 		<div class="name">
@@ -45,13 +45,18 @@
 
 		<p class="form">生年月日</p>
 		<div class="day">
-			<label for=day1></label> <input
-				type="text" name="birthday" placeholder="年/月/日"></input>
+			<label for=day1></label>
+			<input type="text" name="birthday" placeholder="年/月/日"></input>
 
 			<nobr>〜</nobr>
 
-			<label for="day2"></label> <input type="text" name="birthday2" placeholder="年/月/日"></input>
+			<label for="day2"></label>
+			<input type="text" name="birthday2" placeholder="年/月/日"></input>
 		</div>
+
+<div class="submit">
+<input type="submit" class="button" title="検索" value="検索"></input>
+</div>
 
 	</form>
 	<table class="table table-bordered">
@@ -66,22 +71,20 @@
  <c:forEach var="user" items="${userList}">
 			<tbody>
 				<tr>
-				<!-- <td>1000</td>
-				<td>田中</td>
-				<td>1000-10-10</td> -->
 					<td>${user.loginId}</td>
 					<td>${user.name}</td>
 					<td>${user.birthDate}</td>
 
 					<td>
-						<!-- loginidのデータを元に操作 -->
-						<!--  <a href="UserDataServlet"class="btn btn-primary">詳細</a>
-						 <a href="UpdateServlet"class="btn btn-success">更新</a>
-						<a href="DeleteServlet"class="btn btn-danger">削除</a> -->
-
 					<a href="UserDataServlet?id=${user.id}" class="btn btn-primary">詳細</a>
+
+					<c:if test = "${userInfo.loginId == 'admin' || userInfo.loginId == user.loginId}">
 			     	<a href="UpdateServlet?id=${user.id}" class="btn btn-success">更新</a>
+			     	</c:if>
+
+			     	<c:if test = "${userInfo.loginId == 'admin'}">
 			      	<a href="DeleteServlet?id=${user.id}" class="btn btn-danger">削除</a>
+			      	</c:if>
 
 					</td>
 			</tbody>

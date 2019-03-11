@@ -37,10 +37,10 @@ public class LoginServlet extends HttpServlet {
 		// TODO 未実装：ログインセッションがある場合、ユーザ一覧画面にリダイレクトさせる
 		//もしログインセッションがあったら。
 		HttpSession session = request.getSession();
-		if(session.getAttribute("userInfo") !=null) {
-		// ユーザ一覧のサーブレットにリダイレクト
-		response.sendRedirect("UserListServlet");
-		return;
+		if (session.getAttribute("userInfo") != null) {
+			// ユーザ一覧のサーブレットにリダイレクト
+			response.sendRedirect("UserListServlet");
+			return;
 		}
 
 		// フォワード
@@ -54,8 +54,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        // リクエストパラメータの文字コードを指定
-        request.setCharacterEncoding("UTF-8");
+		// リクエストパラメータの文字コードを指定
+		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの入力項目を取得
 		String loginId = request.getParameter("loginId");
@@ -74,15 +74,15 @@ public class LoginServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 			dispatcher.forward(request, response);
 			return;
-		}else {
+		} else {
 
-		/** テーブルに該当のデータが見つかった場合 **/
-		// セッションにユーザの情報をセット
-		HttpSession session = request.getSession();
-		session.setAttribute("userInfo", user);
+			/** テーブルに該当のデータが見つかった場合 **/
+			// セッションにユーザの情報をセット
+			HttpSession session = request.getSession();
+			session.setAttribute("userInfo", user);
 
-		// ユーザ一覧のサーブレットにリダイレクト
-		response.sendRedirect("UserListServlet");
+			// ユーザ一覧のサーブレットにリダイレクト
+			response.sendRedirect("UserListServlet");
 		}
 	}
 }
